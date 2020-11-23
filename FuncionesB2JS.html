@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*___________________________________Fundamentos Básicos II__________________________________*/
+
+        /*Tamaño Grande - Dado un array, escribe una función que cambie todos los números positivos en él, 
+        por el string “big”. Ejemplo: grande([-1,3,5,-5]) devuelve [-1, “big”, “big”, -5].*/
+        function prinTbig(x) {
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] < 0) {
+                    x[i] = "big";
+                }
+            }
+            return x;
+        }
+        console.log(prinTbig([1, 2, -3, -5, 5]));
+
+        /*Imprime (print) el menor, devuelve (return) el mayor - Crea una función que tome un array de números. 
+        La función debería imprimir (print) el menor valor del array, y devolver (return) el mayor. */
+
+        function printMenor(x) {
+            var min2 = x[0];
+            var max2 = x[0];
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] < min2) {
+                    min2 = x[i];
+                    console.log(min2);
+                } else if (x[i] > max2) {
+                    max2 = x[i];
+                }
+            }
+            return max2;
+        }
+        console.log(printMenor([5, 8, -7]));
+        /*Imprime (print) uno, devuelve (return) otro- Crea una función para un 
+        array de números. La función debería imprimir (print) el penúltimo valor 
+        y devolver (return) el primer valor impar.*/
+        function prinTreturn(x) {
+            var pvalor = 0;
+            var impar = [];
+            var pvalor = x.length - 2;
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] % 2 != 0) {
+                    impar.push(x[i]);
+                }
+                if (i == pvalor) {
+                    pvalor = x[i];
+                    console.log(pvalor);
+                }
+            }
+            console.log(impar[0]);
+            return pvalor;
+        }
+        prinTreturn([1, 2, 4, 9, 13]);
+        /*Doble Visión - Dado un array, crea una función que devuelva un nuevo 
+        array donde cada valor se duplique. Entonces, doble([1,2,3]) debiera 
+        devolver [2, 4, 6] sin cambiar el array original.*/
+        function devuElve(x) {
+            var aCopia = [];
+            var resul = 0;
+            for (i = 0; i < x.length; i++) {
+                resul = x[i] * 2;
+                aCopia.push(resul)
+
+            }
+            return aCopia;
+        }
+        console.log(devuElve([2, 4, 6, 8]))
+            /*Contar Positivos -  Dado un array de números, crea una
+             función para reemplazar el último valor con el número de valores positivos 
+            encontrados en el array. Ejemplo, contarPositivos([-1,1,1,1]) cambia el array original y devuelve [-1,1,1,3].*/
+        function contarPosi(x) {
+            sumC = 0;
+            for (i = 0; i < x.length; i++) {
+                if (x[i] >= 0) {
+                    sumC = sumC + x[i];
+                }
+            }
+            x[x.length - 1] = sumC;
+            return x;
+        }
+        console.log(contarPosi([9, -4, -6, 8]))
+            /*Pares e Impares - Crea una función que acepte un array. Cada vez que ese 
+            array tenga 3 valores impares seguidos, imprime (print) 
+            “¡Qué imparcial!”, y cada vez que tenga 3 pares seguidos, imprime (print) “¡Es para bien!”.*/
+
+        function imparesPares(x) {
+            var impares = [];
+            var contadorPar = 0;
+            var contadorImpar = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] % 2 == 1) {
+                    contadorImpar++
+
+                } else {
+                    contadorPar++
+
+                }
+
+            }
+            if (contadorImpar == 4) {
+                console.log("Que Imparcial");
+                contadorImpar = 0;
+            }
+            if (contadorPar == 3) {
+                console.log("¡Es para Bien!");
+                contadorPar = 0;
+            }
+
+        }
+        imparesPares([1, 2, 4, 5, 6, 9, 7])
+
+        /*Incrementa los Segundos - Dado un array de números arr, agrega 1 a cualquier otro elemento, específicamente 
+        a aquellos cuyo índice es impar (arr[1], arr[3], arr[5], etc). Luego, console.log 
+        cada valor del array y devuelve arr. */
+        function incrementaSegundos(x) {
+            arr = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (i % 2 != 0) {
+                    x[i]++;
+                }
+            }
+            return x;
+        }
+        console.log(incrementaSegundos([1, 2, 3, 4, 5, 6, 7]))
+
+        /*Longitudes previas - Pasado un array (similar a decir ‘tomado un array’ o ‘dado un array’) 
+        que contiene strings, reemplaza cada string con un número de acuerdo cantidad de letras (longitud) 
+        del string anterior. Por ejemplo, longitudesPrevias([“programar”,“dojo”, “genial”]) 
+        debería devolver [“programar”,9, 4]. Pista: ¿For loops solo puede ir hacia*/
+
+        function longiPrevias(x) {
+            var nuevoLongi = [];
+            nuevoLongi.push(x[0]);
+            for (var i = 1; i < x.length; i++) {
+                nuevoLongi.push(x[i - 1].length);
+            }
+            return nuevoLongi;
+        }
+        console.log(longiPrevias(["Fabian", "Perez", "Solis"]));
+        /*Agrega Siete - Construye una función que acepte un array. Devuelve un nuevo array con todos los valores del 
+        original, pero sumando 7 a cada uno. No alteres el array original. Por ejemplo, agregaSiete([1,2,3) 
+        debería devolver [8,9,10] en un nuevo array.*/
+        function agregaSiete(x) {
+            var narray = [];
+            for (var i = 0; i < x.length; i++) {
+                narray.push(x[i] + 7);
+            }
+            console.log(narray)
+            return x;
+        }
+        console.log(agregaSiete([4, 7, 8, 9]))
+
+
+        /* Array Inverso - Dado un array, escribe una función que invierte sus valores en el lugar. Ejemplo: 
+        invertir([3,1,6,4,2)) devuelve el mismo array pero con sus valores al revés, es decir [2,4,6,1,3]. 
+        Haz esto sin crear un array  temporal vacío. (Pista: necesitarás intercambiar (swap) valores).*/
+        function arrayIve(x) {
+            for (var i = 0; i < x.length; i++) {
+                x.reverse();
+            }
+            return x;
+        }
+        console.log(arrayIve([1, 2, 3, 4, 5]))
+
+
+        /*Perspectiva: Negativa - Dado un array crear y devuelve uno nuevo que contenga todos los valores del array 
+        original, pero negativos (no simplemente multiplicando por -1). Dado [1,-3,5], devuelve [-1,-3,-5].*/
+
+        function Perspectiva(x) {
+            var arrayP = [];
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] > 0) {
+                    arrayP.push(-x[i])
+                } else {
+                    arrayP.push(x[i])
+                }
+            }
+            console.log(arrayP);
+        }
+        console.log(Perspectiva([2, 4, 5, -4]))
+
+        /*Siempre hambriento - Crea una función que acepte un array e imprima (print) 
+        “yummy” cada vez que alguno de los valores sea “comida”. Si ningún valor
+         es “comida”, entonces imprime “tengo hambre” una vez. */
+
+        function siempreHambriento() {
+            var x = ["comida", "comida", "pan"]
+            var cont = 0;
+            for (var i = 0; i < x.length; i++) {
+                if (x[i] == "comida") {
+                    cont++
+                    console.log("yummy")
+                }
+            }
+            if (cont == 0) {
+                console.log("Tengo Hambre ");
+            }
+        }
+        siempreHambriento();
+
+        /*Cambiar hacia el centro -  Dado un array, cambia el primer y último valor, el tercero con el ante 
+        penútimo, etc. Ejemplo: cambiaHaciaElCentro([true, 42, “Ada”, 2, “pizza”]) cambia el array 
+        a [“pizza¨, 42, “Ada”, true]. cambiaHaciaElCentro([1,2,3,4,5,6]) cambia el array a [6,2,4,3,5,1].
+        No es necesario devolver (return) el array esta vez. */
+        var colores = ([true, 42, "Ada", 2, "pizza"]);
+        colores.splice(4, 1, true);
+        colores.splice(0, 1, "pizza");
+        colores.splice(2, 1, 2);
+        colores.splice(3, 1, "ada");
+        console.log(colores)
+
+
+
+        /*Escala el Array - Dado un array arr y un número num, multiplica todos los valores en el 
+        array arr por el número num, y devuelve el array arr modificado. Por ejemplo, 
+        escalaArray([1,2,3], 3] debería devolver [3,6,9]. */
+
+        function escalaArray(x, y) {
+
+            for (var i = 0; i < x.length; i++) {
+                x[i] = x[i] * y;
+            }
+            return x;
+        }
+        escalaArray([3, 6, 7, 8], 3)
+    </script>
+    </head>
+
+</html>
